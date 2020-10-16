@@ -18,7 +18,7 @@ export const state = () => ({
   }
 
   export const getters =  {
-    getLocale (state) {
+    getLanguage (state) {
       return state.locale;
     },
   }

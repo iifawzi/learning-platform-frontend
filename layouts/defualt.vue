@@ -12,13 +12,8 @@ export default {
     },
     bodyAttrs:{
         dir: this.language == 'ar' ? 'rtl' : 'ltr',
-    }
+    },
   }
   },
-      computed:{
-    language(){
-      return this.$store.getters.getLocale;
-    }
-  }
 }
 </script>
