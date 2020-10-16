@@ -1,6 +1,5 @@
-
+import locales from "./locales/locales"
 export default {
-  mode: 'universal',
   /*
   ** Headers of the page
   */
@@ -34,7 +33,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/i18n.js',
+    "~/plugins/i18n.js",
     "~/plugins/vuelidate.js",
     "~/plugins/axios.js",
     "~/plugins/initMixins.js"
@@ -43,7 +42,6 @@ export default {
   ** Routers configs
   */
  router: {
-  middleware: ['language'],
 },
 /*
   ** Nuxt.js dev-modules
@@ -55,8 +53,32 @@ export default {
   */
  modules: [
   '@nuxtjs/style-resources',
-  "@nuxtjs/axios"
+  "@nuxtjs/axios",
+  'nuxt-i18n'
 ],
+/*
+** I18N Settings: 
+*/
+i18n: {
+  seo: false,
+  strategy: "prefix_and_default",
+  rootRedirect: "en",
+  defaultLocale: 'en',
+  locales: [
+    {
+      code: 'en',
+      iso: 'en-US'
+    },
+    {
+      code: 'ar',
+      iso: 'ar-EG'
+    },
+  ],
+  vueI18n: {
+    fallbackLocale: 'en',
+    messages: locales,
+  }
+},
   /*
 ** Axios Settings: 
 */

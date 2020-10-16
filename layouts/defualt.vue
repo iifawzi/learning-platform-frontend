@@ -5,15 +5,8 @@
 </template>
 <script>
 export default {
-      head() {
-    return {
-    htmlAttrs: {
-      lang: this.language,
-    },
-    bodyAttrs:{
-        dir: this.language == 'ar' ? 'rtl' : 'ltr',
-    },
-  }
+  head() {
+    return this.$nuxtI18nSeo();
   },
-}
+};
 </script>
