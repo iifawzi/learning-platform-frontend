@@ -25,11 +25,26 @@ export default {
   css: [
   ],
   /*
+ Global Sass files: 
+  */
+ styleResources: {
+  scss: ['./assets/scss/variables.scss']
+},
+  /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/i18n.js',
+    "~/plugins/vuelidate.js",
+    "~/plugins/axios.js"
   ],
   /*
+  ** Routers configs
+  */
+ router: {
+  middleware: ['language'],
+},
+/*
   ** Nuxt.js dev-modules
   */
   buildModules: [
@@ -37,8 +52,17 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-  ],
+ modules: [
+  '@nuxtjs/style-resources',
+  "@nuxtjs/axios"
+],
+  /*
+** Axios Settings: 
+*/
+axios: {
+baseURL: 'http://localhost:3000/api/',
+},
+      /*
   /*
   ** Build configuration
   */

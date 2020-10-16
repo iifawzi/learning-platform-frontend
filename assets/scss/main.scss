@@ -1,0 +1,30 @@
+@import "./fonts.scss";
+html {
+  font-size: 10px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family:  Tajawal;
+  background-color: $white-1;
+  color: $grey-2;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 1.6rem;
+}
+input, button {
+  font-family:  Tajawal;
+}
+input[type=text] {   
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  box-sizing: border-box;
+}
