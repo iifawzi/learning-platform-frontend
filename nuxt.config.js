@@ -22,6 +22,8 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/scss/main.scss',
+    '~/assets/css/all.css',
   ],
   /*
  Global Sass files: 

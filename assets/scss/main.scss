@@ -5,9 +5,8 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   font-family:  Tajawal;
-  background-color: $white-1;
-  color: $grey-2;
   overflow-x: hidden;
+  color: $dark-blue;
 }
 
 body {
@@ -20,6 +19,11 @@ input[type=text] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
 }
 
 *,
