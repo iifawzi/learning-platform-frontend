@@ -1,7 +1,7 @@
 <template>
-    <form class="login-form">
+    <div class="login-form">
         <div class="input-container">
- <inputField type="text" placeholder="Username"/>
+ <inputField type="text" placeholder="Username" autofocus/>
         </div>
          <div class="input-container">
  <inputField type="password" placeholder="Password"/>
@@ -10,7 +10,7 @@
  <submitButton title="Sign in" color="login-blue"  />
         </div>
         <div class="no-account">Don't have an account? <span class="register-word">Register</span></div>
-    </form>
+    </div>
 </template>
 
 <script>

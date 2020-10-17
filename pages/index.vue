@@ -66,7 +66,7 @@ export default {
       flex-flow: row;
       align-items: center;
       .languages {
-        margin-inline-end: 10px;
+        margin-inline-end: 40px;
         img {
           width: 2.4rem;
         }
