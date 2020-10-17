@@ -44,7 +44,7 @@ export default {
 .home-page {
   display: flex;
   flex-flow: column;
-  background-image: linear-gradient(to bottom, $white, $sky);
+  background-image: linear-gradient(to bottom, var(--white), var(--sky));
   min-height: 100vh;
   &__header {
     height: 90px;

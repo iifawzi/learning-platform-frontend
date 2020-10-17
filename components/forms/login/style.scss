@@ -14,10 +14,10 @@
        width: 100%;
        font-size: 1.6rem;
        .register-word {
-           color: $blue;
+           color: var(--blue);
            cursor: pointer;
            &:hover {
-               color: $blue-1;
+               color: var(--blue-1);
            }
        }
    }

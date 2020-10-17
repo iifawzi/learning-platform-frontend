@@ -1,16 +1,19 @@
-// white: 
-$white : #FFFFFF;
-$white-1: #F0F6FF;
-// sky: 
-$sky: #e5f5fd;
-// blue: 
-$dark-blue: #263239;
-$dark-blue-1: #93a4b1;
-$dark-blue-2: #8093a1;
-//grey: 
-$grey: #d0d4db;
-$grey-1: #C4C9D2;
-$grey-2: #b7bbc4;
-// blue: 
-$blue : #6BA6FF;
-$blue-1 : #4f94fa;
+:root {
+    --white : #FFFFFF;
+    --white-1: #F0F6FF;
+    // sky: 
+    --sky: #e5f5fd;
+    // blue: 
+    --dark-blue: #263239;
+    --dark-blue-1: #93a4b1;
+    --dark-blue-2: #8093a1;
+    //grey: 
+    --grey: #d0d4db;
+    --grey-1: #C4C9D2;
+    --grey-2: #b7bbc4;
+    // blue: 
+    --blue : #6BA6FF;
+    --blue-1 : #4f94fa;
+}
+
+
