@@ -11,17 +11,29 @@
         </nuxt-link>
       </div>
     </section>
-    <section class="home-page__content container"></section>
+    <section class="home-page__content container">
+      <div class="left">
+        <span class="text">#1 Intelligent Eduction Platform for your students, teachers.</span>
+        <img class="learning-image" src="~/assets/images/home/learning.png" />
+      </div>
+      <div class="right">
+          <LoginForm/>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import LoginForm from "~/components/forms/login"
 export default {
   head() {
     return {
       title: "Home | Learning Platform",
     };
   },
+  components: {
+      LoginForm,
+  }
 };
 </script>
 
@@ -38,16 +50,34 @@ export default {
     justify-content: space-between;
     align-items: center;
     .left {
-      font-size: 36px;
+      font-size: 3.6rem;
     }
     .right {
       img {
-        width: 24px;
+        width: 2.4rem;
       }
     }
   }
   &__content {
     margin-top: 100px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    .left {
+      width: 50%;
+      .text {
+        font-size: 4rem;
+        width: 100%;
+        display: inline-block;
+      }
+      .learning-image {
+          margin-top: 50px;
+        width: 450px;
+      }
+    }
+    .right {
+        width: 50%;
+    }
   }
 }
 </style>

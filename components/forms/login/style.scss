@@ -1,0 +1,14 @@
+.login-form {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    .input-container {
+        width: 300px;
+        height: 60px;
+    }
+    .input-container:not(:last-child){
+        margin-bottom: 10px;
+    }
+   
+}
