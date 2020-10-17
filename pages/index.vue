@@ -18,7 +18,7 @@
     </section>
     <section class="home-page__content container">
       <div class="left">
-        <span class="text">#1 Intelligent Eduction Platform for your students, teachers.</span>
+        <span class="text">{{$t("home.title")}}</span>
         <img class="learning-image" src="~/assets/images/home/learning.png" />
       </div>
       <div class="right">

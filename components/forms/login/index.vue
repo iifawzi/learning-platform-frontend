@@ -1,16 +1,16 @@
 <template>
-    <div class="login-form">
+    <form class="login-form">
         <div class="input-container">
- <inputField type="text" placeholder="Username" autofocus/>
+ <inputField type="text" :placeholder="$t('shared.username')" autofocus/>
         </div>
          <div class="input-container">
- <inputField type="password" placeholder="Password"/>
+ <inputField type="password" :placeholder="$t('shared.password')" autocomplete/>
         </div>
          <div class="input-container">
- <submitButton title="Sign in" color="login-blue"  />
+ <submitButton :title="$t('home.signin')" color="login-blue"  />
         </div>
-        <div class="no-account">Don't have an account? <span class="register-word">Register</span></div>
-    </div>
+        <div class="no-account">{{$t('home.noAccount')}} <span class="register-word">{{$t('home.register')}}</span></div>
+    </form>
 </template>
 
 <script>
