@@ -9,6 +9,7 @@
          <div class="input-container">
  <submitButton title="Sign in" color="login-blue"  />
         </div>
+        <div class="no-account">Don't have an account? <span class="register-word">Register</span></div>
     </form>
 </template>
 

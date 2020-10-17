@@ -17,7 +17,10 @@
         <img class="learning-image" src="~/assets/images/home/learning.png" />
       </div>
       <div class="right">
+          <div class="login-form">
           <LoginForm/>
+
+          </div>
       </div>
     </section>
   </div>
@@ -77,6 +80,11 @@ export default {
     }
     .right {
         width: 50%;
+        display: flex;
+        justify-content: center;
+        .login-form {
+            width: 300px;
+        }
     }
   }
 }
