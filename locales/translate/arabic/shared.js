@@ -1,5 +1,6 @@
 export default {
     "username": "اسم المستخدم",
     "password": "كلمة السر",
-    "phone_number": "رقم الموبايل"
+    "phone_number": "رقم الموبايل",
+    "student_name": "اسم الطالب"
 }

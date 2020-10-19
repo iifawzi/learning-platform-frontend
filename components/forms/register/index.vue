@@ -1,5 +1,18 @@
 <template>
-  <form class="login-form">
+  <form class="register-form">
+    <div class="input-container">
+      <inputField
+        type="text"
+        :placeholder="$t('shared.student_name')"
+        autofocus
+        v-model="$v.student_info.student_name.$model"
+        @input="checkCorrectance"
+      >
+        <div class="error" v-if="$v.student_info.student_name.$dirty">
+          <span v-if="!$v.student_info.student_name.required">{{$t("errors.required")}}</span>
+        </div>
+      </inputField>
+    </div>
     <div class="input-container">
       <inputField
         type="text"
@@ -10,7 +23,7 @@
       >
         <div class="error" v-if="$v.student_info.phone_number.$dirty">
           <span v-if="!$v.student_info.phone_number.required">{{$t("errors.required")}}</span>
-           <span v-if="!$v.student_info.phone_number.integer">{{$t("errors.integer")}}</span>
+          <span v-if="!$v.student_info.phone_number.integer">{{$t("errors.integer")}}</span>
         </div>
       </inputField>
     </div>
@@ -28,17 +41,17 @@
       </inputField>
     </div>
     <div class="button-container">
-      <submitButton :title="$t('home.signin')" color="login-blue" :isDisabled="status" />
+      <submitButton :title="$t('home.register')" color="login-green" :isDisabled="status" />
     </div>
-    <div class="no-account" @click="$emit('show-register', true)">
-      {{$t('home.noAccount')}}
-      <span class="register-word">{{$t('home.register')}}</span>
+    <div class="have-account" @click="$emit('show-login', true)">
+      {{$t('home.haveAccount')}}
+      <span class="login-word">{{$t('home.signin')}}</span>
     </div>
   </form>
 </template>
 
 <script>
-import { required, integer} from "vuelidate/lib/validators";
+import { required, integer } from "vuelidate/lib/validators";
 import inputField from "~/components/shared/inputField";
 import submitButton from "~/components/shared/submitButton";
 export default {
@@ -50,6 +63,7 @@ export default {
     return {
       status: true,
       student_info: {
+        student_name: "",
         phone_number: "",
         password: "",
       },
@@ -67,9 +81,12 @@ export default {
   },
   validations: {
     student_info: {
+      student_name: {
+        required,
+      },
       phone_number: {
         required,
-        integer
+        integer,
       },
       password: {
         required,

@@ -1,4 +1,4 @@
-.login-form {
+.register-form {
     height: 100%;
     display: flex;
     flex-flow: column;
@@ -17,27 +17,27 @@
         width: 100%;
         height: 60px;
     }
-   .no-account {
+   .have-account {
        width: 100%;
        font-size: 1.6rem;
        margin-top: 15px;
-       .register-word {
-           color: var(--blue);
+       .login-word {
+           color: var(--green);
            cursor: pointer;
            &:hover {
-               color: var(--blue-1);
+               color: var(--green-1);
            }
        }
    }
 }
 
 @keyframes showForm{
-    0% {
-    opacity: 0;
-    top: 60px;
-    }
-    100%{
-    opacity: 1;
-    top: 0px;
-    }
-    }
+0% {
+opacity: 0;
+top: 60px;
+}
+100%{
+opacity: 1;
+top: 0px;
+}
+}

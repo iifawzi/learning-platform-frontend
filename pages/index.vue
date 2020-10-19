@@ -22,8 +22,11 @@
         <img class="learning-image" src="~/assets/images/home/learning.png" />
       </div>
       <div class="right">
-        <div class="login-form">
-          <LoginForm />
+        <div class="login-form" v-if="!showRegisterForm">
+          <LoginForm @show-register="showRegisterForm = true"/>
+        </div>
+        <div v-else class="register-form">
+           <RegisterForm @show-login="showRegisterForm = false"/>
         </div>
       </div>
     </section>
@@ -32,6 +35,7 @@
 
 <script>
 import LoginForm from "~/components/forms/login";
+import RegisterForm from "~/components/forms/register";
 import themeSwitcher from "~/components/themeSwitcher";
 export default {
   head() {
@@ -39,8 +43,14 @@ export default {
       title: "Home | Learning Platform",
     };
   },
+  data(){
+    return {
+      showRegisterForm: false,
+    }
+  },
   components: {
     LoginForm,
+    RegisterForm,
     themeSwitcher,
   },
 };
@@ -94,10 +104,11 @@ export default {
       width: 50%;
       display: flex;
       justify-content: center;
-      .login-form {
+      .login-form, .register-form {
         width: 300px;
         max-width: 300px;
       }
+      
     }
   }
 }
@@ -124,7 +135,7 @@ export default {
     .right {
       padding: 50px 0px;
       width: 100%;
-      .login-form {
+      .login-form,.register-form {
         width: 300px;
       }
     }
@@ -155,7 +166,7 @@ export default {
       width: 40%;
       display: flex;
       justify-content: center;
-      .login-form {
+      .login-form,.register-form {
         width: 100%;
       }
     }
