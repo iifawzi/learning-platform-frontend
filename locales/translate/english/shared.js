@@ -1,4 +1,6 @@
 export default {
     "username": "Username",
-    "password": "Password"
+    "password": "Password",
+    "phone_number": "Phone Number"
+
 }

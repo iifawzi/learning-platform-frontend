@@ -16,8 +16,8 @@
     &:hover {
         background-color: var(--blue-1);
     }
-}
-.disabled {
-    background-color: var(--white-1);
-    cursor: not-allowed;
+    &[disabled="disabled"]{
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }

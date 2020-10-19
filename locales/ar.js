@@ -1,6 +1,8 @@
-import Home from "./translate/arabic/home"
-import Shared from "./translate/arabic/shared"
+import home from "./translate/arabic/home"
+import shared from "./translate/arabic/shared"
+import errors from "./translate/arabic/errors"
 export default {
-    "home":Home,
-    "shared": Shared,
+    home,
+    shared,
+    errors,
 }
