@@ -5,14 +5,18 @@
     align-items: center;
     .input-container {
         width: 100%;
-        height: 60px;
-    }
+        }
     .input-container:not(:last-child){
         margin-bottom: 10px;
+    }
+    .button-container {
+        width: 100%;
+        height: 60px;
     }
    .no-account {
        width: 100%;
        font-size: 1.6rem;
+       margin-top: 15px;
        .register-word {
            color: var(--blue);
            cursor: pointer;
