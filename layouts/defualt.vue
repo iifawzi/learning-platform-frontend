@@ -5,8 +5,8 @@
 </template>
 <script>
 export default {
-  head() {
+   head () {
     return this.$nuxtI18nSeo();
-  },
+  }
 };
 </script>

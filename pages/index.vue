@@ -4,12 +4,7 @@
       <div class="left">Logo</div>
       <div class="right">
         <div class="languages">
-          <nuxt-link v-if="language === 'ar'" :to="switchLocalePath('en')">
-            <img src="~/assets/images/english.png" />
-          </nuxt-link>
-          <nuxt-link v-else :to="switchLocalePath('ar')">
-            <img src="~/assets/images/arabic.png" />
-          </nuxt-link>
+          <languageSwitcher />
         </div>
         <div class="themes">
           <themeSwitcher />
@@ -37,7 +32,9 @@
 import LoginForm from "~/components/forms/login";
 import RegisterForm from "~/components/forms/register";
 import themeSwitcher from "~/components/themeSwitcher";
+import languageSwitcher from "~/components/languageSwitcher";
 export default {
+  layout: "default",
   head() {
     return {
       title: "Home | Learning Platform",
@@ -52,6 +49,7 @@ export default {
     LoginForm,
     RegisterForm,
     themeSwitcher,
+    languageSwitcher
   },
 };
 </script>
@@ -77,9 +75,6 @@ export default {
       align-items: center;
       .languages {
         margin-inline-end: 40px;
-        img {
-          width: 2.4rem;
-        }
       }
     }
   }

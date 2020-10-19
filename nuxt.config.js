@@ -35,7 +35,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    "~/plugins/i18n.js",
     "~/plugins/vuelidate.js",
     "~/plugins/axios.js",
     "~/plugins/initMixins.js"
@@ -44,6 +43,7 @@ export default {
   ** Routers configs
   */
  router: {
+   middleware:["language"],
 },
 /*
   ** Nuxt.js dev-modules
