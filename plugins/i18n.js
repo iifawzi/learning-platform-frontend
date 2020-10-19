@@ -1,5 +1,4 @@
 export default function ({ app }) {
-  console.log("called");
   app.head.htmlAttrs = {
     dir: app.i18n.locale == "ar" ? "rtl" : "ltr"
   }

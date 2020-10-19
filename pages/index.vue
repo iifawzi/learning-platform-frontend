@@ -96,8 +96,70 @@ export default {
       justify-content: center;
       .login-form {
         width: 300px;
+        max-width: 300px;
       }
     }
   }
+}
+
+@media (max-width: $small-devices){
+  .home-page {
+  &__content {
+    margin-top: 30px;
+    flex-flow: column;
+    .left {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      .text {
+        font-size: 3rem;
+        text-align: center;
+        width: 100%;
+      }
+      .learning-image {
+        display: none;
+      }
+    }
+    .right {
+      padding: 50px 0px;
+      width: 100%;
+      .login-form {
+        width: 300px;
+      }
+    }
+  }
+}
+}
+
+@media (min-width: $small-devices) and (max-width: $medium-devices){
+  .home-page {
+  &__content {
+    margin-top: 100px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    .left {
+      width: 50%;
+      .text {
+        font-size: 3rem;
+        width: 100%;
+        display: inline-block;
+      }
+      .learning-image {
+        margin-top: 50px;
+        width: 350px;
+      }
+    }
+    .right {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      .login-form {
+        width: 100%;
+      }
+    }
+  }
+}
 }
 </style>
