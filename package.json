@@ -17,7 +17,8 @@
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.15.3",
-    "sass-loader": "^10.0.3"
+    "sass-loader": "^10.0.3",
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {}
 }

@@ -16,13 +16,12 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
 import inputField from "~/components/shared/inputField"
 import submitButton from "~/components/shared/submitButton"
 export default {
     components: {
         inputField,
-        submitButton
+        submitButton,
     },
 }
 </script>
