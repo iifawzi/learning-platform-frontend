@@ -1,5 +1,6 @@
 <template>
   <div class="registeration-forms">
+    <!-- Register form -->
     <form class="register-form" v-show="!showOTPForm && !loading_status.sendVerif">
       <div class="input-container">
         <inputField
@@ -64,6 +65,7 @@
       </div>
       <Notification v-if="errors.sendVerif != ''" :label="errors.sendVerif"></Notification>
     </form>
+
     <!-- OTP Form -->
     <form
       class="otp-form"
@@ -89,12 +91,16 @@
         <span class="resend-otp">{{$t('home.resend_otp')}}</span>
         <span @click="showOTPForm = false" class="edit-number">{{$t('home.edit_info')}}</span>
       </div>
+            <!-- Notifi for confirm code call -->
       <Notification v-if="errors.confirmVerif != ''" :label="errors.confirmVerif"></Notification>
     </form>
+
+    <!-- Loading indicator while (confirm otp and add to back). -->
     <loading
       type="circles"
       v-if="loading_status.sendVerif || loading_status.confirmVerifAndBackend"
     />
+      <!-- Notifi for adding to backend api-->
     <Notification v-if="errors.addStudent != ''" :label="errors.addStudent"></Notification>
   </div>
 </template>
@@ -108,6 +114,7 @@ import submitButton from "~/components/shared/submitButton";
 import firebase from "~/helpers/firebase.js";
 import Cookie from "js-cookie";
 export default {
+  // this is used for recaptcha (invisable )
   mounted() {
     // check if real user:
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -128,9 +135,9 @@ export default {
   },
   data() {
     return {
-      status: true,
+      status: true, // status of adding student to the backend.
       showOTPForm: false,
-      otp: "",
+      otp: "", // used to store the code.
       student_info: {
         student_name: "",
         phone_number: "",
@@ -159,18 +166,21 @@ export default {
     submitRegisterForm() {
       this.errors.sendVerif = "";
       this.loading_status.sendVerif = true;
+      // Send the code to the entered phone_number: 
       let phoneNumber = this.student_info.phone_number;
       let appVerifier = window.recaptchaVerifier;
       firebase
         .auth()
         .signInWithPhoneNumber(phoneNumber, appVerifier)
         .then((confirmationResult) => {
+      // if code sent successfully show to otp form: 
           this.loading_status.sendVerif = false;
           this.errors.sendVerif = "";
           this.showOTPForm = true;
           window.confirmationResult = confirmationResult;
         })
         .catch((error) => {
+      // if error while sending the code, show notifi.
           this.loading_status.sendVerif = false;
           this.errors.sendVerif = this.$t("errors.sendOTP");
         });
@@ -179,6 +189,7 @@ export default {
     submitOTPForm() {
       this.errors.confirmVerif = "";
       this.loading_status.confirmVerifAndBackend = true;
+      // check if the entered code is correct: 
       let code = this.otp;
       confirmationResult
         .confirm(code)
@@ -188,6 +199,7 @@ export default {
           this.addStudentToBackend();
         })
         .catch((error) => {
+          // if code is incorrect, show notfi.
           this.loading_status.confirmVerifAndBackend = false;
           this.errors.confirmVerif = this.$t("errors.confirmOTP");
         });
