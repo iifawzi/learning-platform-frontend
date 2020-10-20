@@ -35,6 +35,7 @@ import themeSwitcher from "~/components/themeSwitcher";
 import languageSwitcher from "~/components/languageSwitcher";
 export default {
   layout: "default",
+  middleware: ['allow-login'],
   head() {
     return {
       title: "Home | Learning Platform",

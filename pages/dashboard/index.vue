@@ -1,9 +1,15 @@
 <template>
     <div class="reddd">
-        whehehwo, i did it. 
-           welcome to dashboardddddd
+      <nuxt-link to="/">Home</nuxt-link>
     </div>
 </template>
+
+
+<script>
+export default {
+  middleware: ['is-auth'],
+};
+</script>
 
 <style lang="scss" scoped>
 .reddd {
