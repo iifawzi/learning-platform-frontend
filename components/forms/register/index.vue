@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       status: true,
-      showOTPForm: true,
+      showOTPForm: false,
       otp: "",
       student_info: {
         student_name: "",
