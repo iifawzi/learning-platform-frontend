@@ -55,8 +55,8 @@
           id="send-code-Button"
           :title="$t('shared.active')"
           color="login-green"
-          :isDisabled="status"
-          @click="submitRegisterForm"
+          :isDisabled="disableSendCodeBTN"
+          @click="snedOTPCode"
         />
       </div>
       <div class="have-account" @click="$emit('show-login', true)">
@@ -72,7 +72,7 @@
       v-show="showOTPForm && !loading_status.sendVerif && !loading_status.confirmVerifAndBackend"
     >
       <div class="input-container">
-        <inputField type="text" :placeholder="$t('home.otp')" autofocus v-model="$v.otp.$model">
+        <inputField type="text" :placeholder="$t('home.otp')" autofocus v-model="$v.otp.$model" @input="checkOTPCorrectance">
           <div class="error" v-if="$v.otp.$dirty">
             <span v-if="!$v.otp.required">{{$t("errors.required", {field: $t("home.otp")})}}</span>
             <span v-if="!$v.otp.integer">{{$t("errors.integer", {field: $t("home.otp")})}}</span>
@@ -83,12 +83,12 @@
         <submitButton
           :title="$t('home.register')"
           color="login-orange"
-          :isDisabled="status"
-          @click="submitOTPForm"
+          :isDisabled="disableRegisterBTN"
+          @click="confirmOTPCode"
         />
       </div>
       <div class="help">
-        <span class="resend-otp">{{$t('home.resend_otp')}}</span>
+        <span class="resend-otp" @click="snedOTPCode">{{$t('home.resend_otp')}}</span>
         <span @click="showOTPForm = false" class="edit-number">{{$t('home.edit_info')}}</span>
       </div>
             <!-- Notifi for confirm code call -->
@@ -135,7 +135,8 @@ export default {
   },
   data() {
     return {
-      status: true, // status of adding student to the backend.
+      disableSendCodeBTN: true,
+      disableRegisterBTN: true, 
       showOTPForm: false,
       otp: "", // used to store the code.
       student_info: {
@@ -155,15 +156,25 @@ export default {
     };
   },
   methods: {
-    checkCorrectance() {
+    checkCorrectance() { // check register form's corractance
       if (this.$v.student_info.$invalid === false) {
-        this.status = false;
+        // if there's no errors: 
+        this.disableSendCodeBTN = false;
       } else {
-        this.status = true;
+        this.disableSendCodeBTN = true;
       }
     },
 
-    submitRegisterForm() {
+      checkOTPCorrectance() { // check otp's form's corractance
+      if (this.$v.$otp.$invalid === false) {
+        // if there's no errors: 
+        this.disableRegisterBTN = false;
+      } else {
+        this.disableRegisterBTN = true;
+      }
+    },
+
+    snedOTPCode() {
       this.errors.sendVerif = "";
       this.loading_status.sendVerif = true;
       // Send the code to the entered phone_number: 
@@ -186,7 +197,7 @@ export default {
         });
     },
 
-    submitOTPForm() {
+    confirmOTPCode() {
       this.errors.confirmVerif = "";
       this.loading_status.confirmVerifAndBackend = true;
       // check if the entered code is correct: 
