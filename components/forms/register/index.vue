@@ -67,7 +67,7 @@
     <!-- OTP Form -->
     <form
       class="otp-form"
-      v-show="showOTPForm && !loading_status.sendVerif && !loading_status.confirmVerif"
+      v-show="showOTPForm && !loading_status.sendVerif && !loading_status.confirmVerifAndBackend"
     >
       <div class="input-container">
         <inputField type="text" :placeholder="$t('home.otp')" autofocus v-model="$v.otp.$model">
@@ -91,7 +91,11 @@
       </div>
       <Notification v-if="errors.confirmVerif != ''" :label="errors.confirmVerif"></Notification>
     </form>
-    <loading type="circles" v-if="loading_status.sendVerif || loading_status.confirmVerif" />
+    <loading
+      type="circles"
+      v-if="loading_status.sendVerif || loading_status.confirmVerifAndBackend"
+    />
+    <Notification v-if="errors.addStudent != ''" :label="errors.addStudent"></Notification>
   </div>
 </template>
 
@@ -102,6 +106,7 @@ import loading from "~/components/shared/loading";
 import Notification from "~/components/shared/Notification";
 import submitButton from "~/components/shared/submitButton";
 import firebase from "~/helpers/firebase.js";
+import Cookie from "js-cookie";
 export default {
   mounted() {
     // check if real user:
@@ -124,7 +129,7 @@ export default {
   data() {
     return {
       status: true,
-      showOTPForm: true,
+      showOTPForm: false,
       otp: "",
       student_info: {
         student_name: "",
@@ -133,11 +138,12 @@ export default {
       },
       loading_status: {
         sendVerif: false,
-        confirmVerif: false,
+        confirmVerifAndBackend: false,
       },
       errors: {
         sendVerif: "",
         confirmVerif: "",
+        addStudent: "",
       },
     };
   },
@@ -149,9 +155,10 @@ export default {
         this.status = true;
       }
     },
+
     submitRegisterForm() {
-      this.loading_status.sendVerif = true;
       this.errors.sendVerif = "";
+      this.loading_status.sendVerif = true;
       let phoneNumber = this.student_info.phone_number;
       let appVerifier = window.recaptchaVerifier;
       firebase
@@ -159,6 +166,7 @@ export default {
         .signInWithPhoneNumber(phoneNumber, appVerifier)
         .then((confirmationResult) => {
           this.loading_status.sendVerif = false;
+          this.errors.sendVerif = "";
           this.showOTPForm = true;
           window.confirmationResult = confirmationResult;
         })
@@ -167,20 +175,54 @@ export default {
           this.errors.sendVerif = this.$t("errors.sendOTP");
         });
     },
+
     submitOTPForm() {
       this.errors.confirmVerif = "";
-      this.loading_status.confirmVerif = true;
+      this.loading_status.confirmVerifAndBackend = true;
       let code = this.otp;
       confirmationResult
         .confirm(code)
         .then((result) => {
-          // code is confirmed:
-          this.loading_status.confirmVerif = false;
-          // add to backend:
+          this.errors.confirmVerif = "";
+          // code is confirmed, add to backend:
+          this.addStudentToBackend();
         })
         .catch((error) => {
-          this.loading_status.confirmVerif = false;
+          this.loading_status.confirmVerifAndBackend = false;
           this.errors.confirmVerif = this.$t("errors.confirmOTP");
+        });
+    },
+
+    addStudentToBackend() {
+      this.errors.addStudent = "";
+
+      // api's call:
+      this.$api
+        .post("students/signup", this.student_info)
+        .then((respond) => {
+          this.errors.addStudent = "";
+          const studentData = respond.data.data;
+          Cookie.set("authorization", studentData.token);
+          this.$router.push(this.localePath("/dashboard"));
+        })
+        .catch((err) => {
+          this.loading_status.confirmVerifAndBackend = false;
+          if (!err.response || !err.response.status) {
+            this.errors.addStudent = this.$t("errors.500");
+          } else {
+            switch (err.response.status) {
+              case 400:
+                this.errors.addStudent = this.$t("errors.400");
+                break;
+              case 409:
+                this.errors.addStudent = this.$t("errors.409", {
+                  resource: this.$t("shared.phone_number"),
+                });
+                break;
+              default:
+                this.errors.addStudent = this.$t("errors.500");
+            }
+          }
         });
     },
   },

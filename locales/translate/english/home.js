@@ -6,6 +6,6 @@ export default {
     "haveAccount":"Have an account already?",
     "otp": "Activation Code",
     "edit_info": "Change Phone Number",
-    "resend_otp": "Resend activation code"
-
+    "resend_otp": "Resend activation code",
+    "login_401": "Either username or password is incorrect",
 }

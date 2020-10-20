@@ -64,7 +64,6 @@ export default {
 i18n: {
   seo: false,
   strategy: "prefix_and_default",
-  rootRedirect: "en",
   defaultLocale: 'en',
   locales: [
     {
@@ -85,7 +84,7 @@ i18n: {
 ** Axios Settings: 
 */
 axios: {
-baseURL: 'http://localhost:3000/api/',
+baseURL: 'http://localhost:5000/api/',
 },
       /*
   /*
