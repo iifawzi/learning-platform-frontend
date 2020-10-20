@@ -7,6 +7,10 @@
     cursor: pointer;
     padding-top: 5px;
     transition: 0.2s;
+    &[disabled="disabled"]{
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }
 .login-blue-btn {
     background-color: var(--blue);
@@ -15,10 +19,6 @@
     transition: 0.2s linear;
     &:hover {
         background-color: var(--blue-1);
-    }
-    &[disabled="disabled"]{
-        opacity: 0.5;
-        cursor: not-allowed;
     }
 }
 
@@ -30,9 +30,14 @@
     &:hover {
         background-color: var(--green-1);
     }
-    &[disabled="disabled"]{
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
 }
 
+.login-orange-btn {
+    background-color: var(--orange);
+    color: white;
+    font-size: 2rem;
+    transition: 0.2s linear;
+    &:hover {
+        background-color: var(--orange-1);
+    }
+}

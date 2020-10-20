@@ -9,8 +9,8 @@
         @input="checkCorrectance"
       >
         <div class="error" v-if="$v.student_info.phone_number.$dirty">
-          <span v-if="!$v.student_info.phone_number.required">{{$t("errors.required")}}</span>
-           <span v-if="!$v.student_info.phone_number.integer">{{$t("errors.integer")}}</span>
+          <span v-if="!$v.student_info.phone_number.required">{{$t("errors.required", {field: $t("shared.phone_number")})}}</span>
+           <span v-if="!$v.student_info.phone_number.integer">{{$t("errors.integer", {field: $t("shared.phone_number")})}}</span>
         </div>
       </inputField>
     </div>
@@ -23,7 +23,7 @@
         @input="checkCorrectance"
       >
         <div class="error" v-if="$v.student_info.password.$dirty">
-          <span v-if="!$v.student_info.password.required">{{$t("errors.required")}}</span>
+          <span v-if="!$v.student_info.password.required">{{$t("errors.required", {field: $t("shared.password")})}}</span>
         </div>
       </inputField>
     </div>
@@ -57,7 +57,6 @@ export default {
   },
   methods: {
     checkCorrectance() {
-      console.log("called");
       if (this.$v.$invalid === false) {
         this.status = false;
       } else {

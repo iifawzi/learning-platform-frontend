@@ -1,4 +1,4 @@
 export default {
-    "required": "لا يمكن ان يترك فارغًا",
-    "integer": "يجب ان يكون رقم"
+    "required": "يجب ادخال {field}",
+    "integer": "يجب ان يكون {field} رقم"
 }

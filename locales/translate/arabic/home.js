@@ -3,5 +3,8 @@ export default {
     "signin":"تسجيل دخول",
     "register":"تسجيل",
     "noAccount":"لا تمتلك حساب؟",
-    "haveAccount":"تمتلك حساب؟"
+    "haveAccount":"تمتلك حساب؟",
+    "otp": "رمز التفعيل",
+    "edit_info": "تغيير رقم الموبايل",
+    "resend_otp": "اعادة ارسال رمز التفعيل"
 }

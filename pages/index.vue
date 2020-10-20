@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <section class="home-page__header container">
-      <div class="left">Logo</div>
+      <div class="left"><nuxt-link to="/"></nuxt-link><span class="logo-name">Logo</span></div>
       <div class="right">
         <div class="languages">
           <languageSwitcher />
@@ -68,6 +68,9 @@ export default {
     align-items: center;
     .left {
       font-size: 3.6rem;
+      .logo-name {
+        cursor: pointer;
+      }
     }
     .right {
       display: flex;
