@@ -11,6 +11,7 @@ require("firebase/auth");
     measurementId: "G-W2YM9N3DV1"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+ }
   module.exports = firebase;

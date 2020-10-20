@@ -1,6 +1,6 @@
 <template>
   <div class="registeration-forms">
-    <form class="register-form" v-show="!showOTPForm">
+    <form class="register-form" v-show="!showOTPForm && !loading_status.sendVerif">
       <div class="input-container">
         <inputField
           type="text"
@@ -62,9 +62,13 @@
         {{$t('home.haveAccount')}}
         <span class="login-word">{{$t('home.signin')}}</span>
       </div>
+      <Notification v-if="errors.sendVerif != ''" :label="errors.sendVerif"></Notification>
     </form>
     <!-- OTP Form -->
-    <form class="otp-form" v-show="showOTPForm">
+    <form
+      class="otp-form"
+      v-show="showOTPForm && !loading_status.sendVerif && !loading_status.confirmVerif"
+    >
       <div class="input-container">
         <inputField type="text" :placeholder="$t('home.otp')" autofocus v-model="$v.otp.$model">
           <div class="error" v-if="$v.otp.$dirty">
@@ -85,24 +89,28 @@
         <span class="resend-otp">{{$t('home.resend_otp')}}</span>
         <span @click="showOTPForm = false" class="edit-number">{{$t('home.edit_info')}}</span>
       </div>
+      <Notification v-if="errors.confirmVerif != ''" :label="errors.confirmVerif"></Notification>
     </form>
+    <loading type="circles" v-if="loading_status.sendVerif || loading_status.confirmVerif" />
   </div>
 </template>
 
 <script>
 import { required, integer } from "vuelidate/lib/validators";
 import inputField from "~/components/shared/inputField";
+import loading from "~/components/shared/loading";
+import Notification from "~/components/shared/Notification";
 import submitButton from "~/components/shared/submitButton";
 import firebase from "~/helpers/firebase.js";
 export default {
   mounted() {
+    // check if real user:
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "send-code-Button",
       {
         size: "invisible",
         callback: function (response) {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          console.log("heloo");
         },
       }
     );
@@ -110,16 +118,26 @@ export default {
   components: {
     inputField,
     submitButton,
+    loading,
+    Notification,
   },
   data() {
     return {
       status: true,
-      showOTPForm: false,
+      showOTPForm: true,
       otp: "",
       student_info: {
         student_name: "",
         phone_number: "",
         password: "",
+      },
+      loading_status: {
+        sendVerif: false,
+        confirmVerif: false,
+      },
+      errors: {
+        sendVerif: "",
+        confirmVerif: "",
       },
     };
   },
@@ -132,32 +150,37 @@ export default {
       }
     },
     submitRegisterForm() {
-      var phoneNumber = this.student_info.phone_number;
-      var appVerifier = window.recaptchaVerifier;
+      this.loading_status.sendVerif = true;
+      this.errors.sendVerif = "";
+      let phoneNumber = this.student_info.phone_number;
+      let appVerifier = window.recaptchaVerifier;
       firebase
         .auth()
         .signInWithPhoneNumber(phoneNumber, appVerifier)
         .then((confirmationResult) => {
+          this.loading_status.sendVerif = false;
           this.showOTPForm = true;
           window.confirmationResult = confirmationResult;
         })
-        .catch(function (error) {
-          // Error; SMS not sent
-          // ...
-          console.log(error);
+        .catch((error) => {
+          this.loading_status.sendVerif = false;
+          this.errors.sendVerif = this.$t("errors.sendOTP");
         });
     },
     submitOTPForm() {
-      var code = this.otp;
+      this.errors.confirmVerif = "";
+      this.loading_status.confirmVerif = true;
+      let code = this.otp;
       confirmationResult
         .confirm(code)
-        .then(function (result) {
-          // User signed in successfully.
-          console.log("login successfully");
-          // ...
+        .then((result) => {
+          // code is confirmed:
+          this.loading_status.confirmVerif = false;
+          // add to backend:
         })
-        .catch(function (error) {
-          console.log("errorororo");
+        .catch((error) => {
+          this.loading_status.confirmVerif = false;
+          this.errors.confirmVerif = this.$t("errors.confirmOTP");
         });
     },
   },

@@ -9,6 +9,10 @@
     top: 60px;
     .input-container {
         width: 100%;
+        .error {
+            display: flex;
+            flex-flow: column;
+        }
         }
     .input-container:not(:last-child){
         margin-bottom: 10px;
