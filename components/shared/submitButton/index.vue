@@ -1,10 +1,11 @@
 <template>
-  <button :class="['submitButton', color+'-btn']" :disabled="isDisabled" @click.prevent="$emit('click')">{{title}}</button>
+  <button :class="['submitButton', color+'-btn']" :disabled="isDisabled" @click.prevent="$emit('click')" v-bind="$attrs">{{title}}</button>
 </template>
 
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     color: {
       type: String,

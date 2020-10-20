@@ -24,7 +24,6 @@
       >
         <div class="error" v-if="$v.student_info.phone_number.$dirty">
           <span v-if="!$v.student_info.phone_number.required">{{$t("errors.required", {field: $t("shared.phone_number")})}}</span>
-          <span v-if="!$v.student_info.phone_number.integer">{{$t("errors.integer", {field: $t("shared.phone_number")})}}</span>
         </div>
       </inputField>
     </div>
@@ -42,7 +41,7 @@
       </inputField>
     </div>
     <div class="button-container">
-      <submitButton :title="$t('shared.active')" color="login-green" :isDisabled="status" @click="submitRegisterForm" />
+      <submitButton id="send-code-Button" :title="$t('shared.active')" color="login-green" :isDisabled="status" @click="submitRegisterForm" />
     </div>
     <div class="have-account" @click="$emit('show-login', true)">
       {{$t('home.haveAccount')}}
@@ -65,7 +64,7 @@
       </inputField>
     </div>
     <div class="button-container">
-      <submitButton :title="$t('home.register')" color="login-orange" :isDisabled="status" @click="submitRegisterForm" />
+      <submitButton :title="$t('home.register')" color="login-orange" :isDisabled="status" @click="submitOTPForm" />
     </div>
      <div class="help">
       <span class="resend-otp">{{$t('home.resend_otp')}}</span>
@@ -80,7 +79,18 @@
 import { required, integer } from "vuelidate/lib/validators";
 import inputField from "~/components/shared/inputField";
 import submitButton from "~/components/shared/submitButton";
+import firebase from "~/helpers/firebase.js"
 export default {
+  mounted(){
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('send-code-Button', {
+  'size': 'invisible',
+  'callback': function(response) {
+    // reCAPTCHA solved, allow signInWithPhoneNumber.
+  console.log("heloo");
+  
+  }
+});
+  },
   components: {
     inputField,
     submitButton,
@@ -106,8 +116,28 @@ export default {
       }
     },
     submitRegisterForm(){
+     var phoneNumber = this.student_info.phone_number;
+var appVerifier = window.recaptchaVerifier;
+firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    .then((confirmationResult)=> {
       this.showOTPForm = true;
-    }
+      window.confirmationResult = confirmationResult;
+    }).catch(function (error) {
+      // Error; SMS not sent
+      // ...
+      console.log(error);
+    });
+    },
+    submitOTPForm(){
+      var code = this.otp;
+confirmationResult.confirm(code).then(function (result) {
+  // User signed in successfully.
+ console.log("login successfully");
+  // ...
+}).catch(function (error) {
+  console.log("errorororo");
+});
+    },
   },
   validations: {
     otp: {
@@ -120,7 +150,6 @@ export default {
       },
       phone_number: {
         required,
-        integer,
       },
       password: {
         required,
