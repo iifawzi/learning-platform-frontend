@@ -1,8 +1,10 @@
 import home from "./translate/arabic/home"
 import shared from "./translate/arabic/shared"
 import errors from "./translate/arabic/errors"
+import messages from "./translate/arabic/messages"
 export default {
     home,
     shared,
     errors,
+    messages,
 }
