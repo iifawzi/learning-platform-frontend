@@ -91,6 +91,7 @@ export default {
           this.loading = false;
           const studentData = respond.data.data;
           Cookie.set("authorization", studentData.token);
+          Cookie.set("refresh_token", studentData.refresh_token);
           this.$router.push(this.localePath('/dashboard', this.language));
         })
         .catch((err) => {

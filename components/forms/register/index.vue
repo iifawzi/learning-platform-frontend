@@ -166,7 +166,7 @@ export default {
     },
 
       checkOTPCorrectance() { // check otp's form's corractance
-      if (this.$v.$otp.$invalid === false) {
+      if (this.$v.otp.$invalid === false) {
         // if there's no errors: 
         this.disableRegisterBTN = false;
       } else {

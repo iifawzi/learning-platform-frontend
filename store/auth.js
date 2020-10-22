@@ -16,20 +16,22 @@ export const mutations = {
 export const actions = {
 
     // return true => means the student is verified. 
-    isVerified({ commit }, req) {
+    async isVerified({ commit }, req) {
         if (req) {
             const cookie = req.headers.cookie;
             if (!cookie) {
                 return false;
             } else {
                 const authorization = cookie.split(";").find(c => c.trim().startsWith("authorization"));
-                if (!authorization) {
+                const refresh_token = cookie.split(";").find(c => c.trim().startsWith("refresh_token"));
+                if (!authorization || !refresh_token) {
                     return false;
                 } else {
                     // token is exists: 
                     const token = authorization.split("=")[1];
+                    const refresh_tokenValue = refresh_token.split("=")[1];
                     // check if token is valid: 
-                    const { status, student_info } = checkToken(token);
+                    const { status, student_info } = await checkToken.apply(this, [token, refresh_tokenValue]);
                     if (status) { // if status is true, save student_info in state: 
                         commit("set_student_info", student_info);
                     }
@@ -39,11 +41,12 @@ export const actions = {
             }
         } else {
             const authorization = Cookie.get("authorization");
+            const refresh_token = Cookie.get("refresh_token");
             if (!authorization) {
                 return false;
             } else {
                 // check if token is valid: 
-                const { status, student_info } = checkToken(authorization);
+                const { status, student_info } = await checkToken.apply(this, [authorization, refresh_token]);
                 if (status) { // if status is true, save student_info in state: 
                     commit("set_student_info", student_info);
                 }
@@ -72,7 +75,7 @@ export const getters = {
 
 
 // this function is used to check if the token is valid or not
-const checkToken = (token) => {
+const checkToken = async function (token, refresh_token) {
     try {
         const decoded = jwt_decode(token);
         const student_info = {
@@ -85,6 +88,18 @@ const checkToken = (token) => {
         const sixtyMinAfterNow = current_time + 60;
         if (sixtyMinAfterNow > exp) { // if true, so the token will end in less than one hour => get new token: 
             // call api to get new token: 
+            return await this.$axios.post("/students/refresh_token", { refresh_token: refresh_token }, { headers: { authorization: token } }).then(res => {
+                Cookie.set("authorization", res.data.data.authorization);
+                return {
+                    status: true,
+                    student_info,
+                };
+            }).catch((err) => {
+                return {
+                    status: false,
+                    student_info: null,
+                };
+            });
         } else {
             return {
                 status: true,
@@ -92,6 +107,10 @@ const checkToken = (token) => {
             };
         }
     } catch (err) {
-        return false;
+        return {
+            status: false,
+            student_info: null,
+        };
     }
 };
+
