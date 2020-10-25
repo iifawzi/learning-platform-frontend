@@ -1,6 +1,7 @@
 :root {
     --white : #FFFFFF;
     --white-1: #F0F6FF;
+    --white-2: #F5F6FA; // dashboard bg-color
     // sky: 
     --sky: #e5f5fd;
     // dark-blue: 
@@ -23,11 +24,14 @@
     // orange: 
     --orange: #fd772a;
     --orange-1: #ff6f1b;
+    // aside and navbar color:
+    --aside-nav: #FFFFFF; 
 }
 
 [theme="dark"] {
     --white : #2A2838;
     --white-1: #F0F6FF;
+    --white-2: #131D25; // TODO:: Update for dark theme.
     // sky: 
     --sky: #1A1926;
     // dark-blue: 
@@ -44,4 +48,6 @@
     --blue-1 : #4f94fa;
     // red: 
     --red: #f82944;
+     // aside and navbar color:
+     --aside-nav: #1D242E; 
 }

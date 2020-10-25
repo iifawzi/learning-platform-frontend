@@ -13,9 +13,6 @@
 import dashAside from "~/components/aside";
 import dashNav from "~/components/navbar";
 export default {
-  head() {
-    return this.$nuxtI18nSeo();
-  },
   components: {
     dashAside,
     dashNav,
@@ -33,6 +30,7 @@ export default {
 .dashboard-layout {
   display: flex;
   flex-flow: row;
+  background-color: var(--white-2);
 }
 .aside {
   width: 0px;

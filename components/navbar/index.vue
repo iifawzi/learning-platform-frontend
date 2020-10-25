@@ -1,13 +1,16 @@
 <template>
   <nav class="dashboard-nav">
-    <span class="toggleAside" @click="toggleAside"><i class="fas fa-bars"></i></span>
+    <span class="toggleAside" @click="toggleAside">
+      <i class="fas fa-bars"></i>
+    </span>
     <div class="navbar__content">
       <ul>
-        <li>Link here</li>
-        <li>Link here</li>
-        <li>Link here</li>
-        <li>Link here</li>
-        <li>Link here</li>
+        <li>
+          <languageSwitcher />
+        </li>
+        <li>
+          <themeSwitcher />
+        </li>
       </ul>
     </div>
   </nav>
@@ -15,17 +18,23 @@
 
 
 <script>
+import languageSwitcher from "~/components/languageSwitcher";
+import themeSwitcher from "~/components/themeSwitcher";
 export default {
+  components: {
+    languageSwitcher,
+    themeSwitcher,
+  },
   methods: {
     toggleAside() {
       this.$store.dispatch("dashboard/aside/toggleAside");
     },
   },
   computed: {
-         showAside() {
+    showAside() {
       return this.$store.getters["dashboard/aside/getAsideStatus"];
     },
-  }
+  },
 };
 </script>
 
