@@ -8,6 +8,7 @@
 <script>
 export default {
   middleware: ['is-auth'],
+  layout: "dashboard"
 };
 </script>
 
