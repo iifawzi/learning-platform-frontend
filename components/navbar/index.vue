@@ -1,7 +1,6 @@
 <template>
   <nav class="dashboard-nav">
-    <span class="toggleAside" v-if="showAside" @click="toggleAside">close aside</span>
-    <span class="toggleAside" v-else @click="toggleAside">open aside</span>
+    <span class="toggleAside" @click="toggleAside"><i class="fas fa-bars"></i></span>
     <div class="navbar__content">
       <ul>
         <li>Link here</li>

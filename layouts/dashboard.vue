@@ -35,8 +35,7 @@ export default {
   flex-flow: row;
 }
 .aside {
-  width: 0%;
-  max-width: 250px;
+  width: 0px;
   position: relative;
   left: 0px;
 }
@@ -54,13 +53,13 @@ export default {
 
 @keyframes showAside {
   0% {
-    left: -350px;
+    left: -230px;
     width: 0%;
     display: none;
   }
   100% {
     left: 0px;
-    width: 20%;
+    width: 230px;
     display: block;
   }
 }
@@ -68,14 +67,25 @@ export default {
 @keyframes closeAside {
   0% {
     left: 0px;
-    width: 20%;
+    width: 230px;
     display: block;
   }
   100% {
-    left: -350px;
+    left: -230px;
     width: 0%;
     display: none;
   }
+}
+
+
+
+@media (max-width: $small-devices){
+    .aside {
+  width: 0%;
+  max-width: 250px;
+  position: absolute;
+  left: 0px; 
+    }
 }
 </style>
 
