@@ -8,4 +8,5 @@ export default {
     "edit_info": "Change Phone Number",
     "resend_otp": "Resend activation code",
     "login_401": "Either username or password is incorrect",
+    "logout": "Logout"
 }

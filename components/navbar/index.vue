@@ -11,6 +11,7 @@
         <li>
           <themeSwitcher />
         </li>
+        <li class="logout" @click="logout">{{$t("home.logout")}}</li>
       </ul>
     </div>
   </nav>
@@ -20,6 +21,7 @@
 <script>
 import languageSwitcher from "~/components/languageSwitcher";
 import themeSwitcher from "~/components/themeSwitcher";
+import Cookie from "js-cookie";
 export default {
   components: {
     languageSwitcher,
@@ -28,6 +30,11 @@ export default {
   methods: {
     toggleAside() {
       this.$store.dispatch("dashboard/aside/toggleAside");
+    },
+    logout() {
+      Cookie.remove("refresh_token");
+      Cookie.remove("authorization");
+      this.$router.push(this.localePath("/"));
     },
   },
   computed: {

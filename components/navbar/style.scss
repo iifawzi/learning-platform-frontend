@@ -32,6 +32,9 @@
       li:not(:last-child) {
         margin-inline-end: 20px;
       }
+      .logout {
+        cursor: pointer;
+      }
     }
   }
 }
