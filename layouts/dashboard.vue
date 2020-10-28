@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-layout">
-    <div :class="['aside', getAnimationClass]">
+    <div :class="['aside', language ,getAnimationClass]">
       <dashAside />
     </div>
     <div class="dashboard__content">
@@ -42,12 +42,20 @@ export default {
   flex-flow: column;
   flex-grow: 1;
 }
-.openAnimation {
+.en.openAnimation {
   animation: showAside 0.4s ease-in-out forwards;
 }
-.closeAnimation {
+.en.closeAnimation {
   animation: closeAside 0.4s ease-in-out forwards;
 }
+
+.ar.openAnimation {
+  animation: showAside 0.4s ease-in-out forwards;
+}
+.ar.closeAnimation {
+  animation: closeAside 0.4s ease-in-out forwards;
+}
+
 
 @keyframes showAside {
   0% {
@@ -75,6 +83,31 @@ export default {
   }
 }
 
+@keyframes showAside {
+  0% {
+    right: -230px;
+    width: 0%;
+    display: none;
+  }
+  100% {
+    right: 0px;
+    width: 230px;
+    display: block;
+  }
+}
+
+@keyframes closeAside {
+  0% {
+    right: 0px;
+    width: 230px;
+    display: block;
+  }
+  100% {
+    right: -230px;
+    width: 0%;
+    display: none;
+  }
+}
 
 
 @media (max-width: $small-devices){

@@ -11,6 +11,11 @@
 
   .toggleAside {
     cursor: pointer;
+    transition: 0.5s linear;
+
+  }
+  .colored-bars {
+    color: var(--green-1);
   }
 
   .navbar__content {
