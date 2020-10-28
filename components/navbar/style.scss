@@ -32,8 +32,11 @@
       li:not(:last-child) {
         margin-inline-end: 20px;
       }
-      .logout {
+      .logout-icon {
         cursor: pointer;
+      }
+      .ar.logout-icon {
+     transform: rotate(180deg);
       }
     }
   }

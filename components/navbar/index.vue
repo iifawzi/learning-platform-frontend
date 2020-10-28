@@ -11,7 +11,7 @@
         <li>
           <themeSwitcher />
         </li>
-        <li class="logout" @click="logout">{{$t("home.logout")}}</li>
+        <li class="logout" @click="logout"><i :class="['fas fa-sign-in-alt logout-icon', language]"></i></li>
       </ul>
     </div>
   </nav>
