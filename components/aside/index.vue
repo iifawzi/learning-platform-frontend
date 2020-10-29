@@ -37,7 +37,6 @@
             </nuxt-link>
           </li>
         </ul>
-        <img class="bottom__icon" src="~/assets/images/aside/books.png"/>
       </div>
     </div>
   </aside>
