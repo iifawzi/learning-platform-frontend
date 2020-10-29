@@ -30,10 +30,10 @@ export default {
 .dashboard-layout {
   display: flex;
   flex-flow: row;
-  background-image: linear-gradient(to bottom, var(--white), var(--sky));
+  background-color: var(--white-3);
 }
 .aside {
-  width: 230px;
+  width: 0px;
   position: relative;
 }
 .dashboard__content {
@@ -59,13 +59,13 @@ export default {
 
 @keyframes showAside {
   0% {
-    left: -230px;
+    left: -200px;
     width: 0%;
     display: none;
   }
   100% {
     left: 0px;
-    width: 230px;
+    width: 200px;
     display: block;
   }
 }
@@ -73,7 +73,7 @@ export default {
 @keyframes closeAside {
   0% {
     left: 0px;
-    width: 230px;
+    width: 200px;
     display: block;
   }
   100% {
@@ -85,13 +85,13 @@ export default {
 
 @keyframes showAside-ar {
   0% {
-    right: -230px;
+    right: -200px;
     width: 0%;
     display: none;
   }
   100% {
     right: 0px;
-    width: 230px;
+    width: 200px;
     display: block;
   }
 }
@@ -99,11 +99,11 @@ export default {
 @keyframes closeAside-ar {
   0% {
     right: 0px;
-    width: 230px;
+    width: 200px;
     display: block;
   }
   100% {
-    right: -230px;
+    right: -200px;
     width: 0%;
     display: none;
   }
