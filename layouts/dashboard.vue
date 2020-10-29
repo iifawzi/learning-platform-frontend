@@ -33,9 +33,8 @@ export default {
   background-image: linear-gradient(to bottom, var(--white), var(--sky));
 }
 .aside {
-  width: 0px;
+  width: 230px;
   position: relative;
-  left: 0px;
 }
 .dashboard__content {
   display: flex;
@@ -51,10 +50,10 @@ export default {
 }
 
 .ar.openAnimation {
-  animation: showAside 0.4s ease-in-out forwards;
+  animation: showAside-ar 0.4s ease-in-out forwards;
 }
 .ar.closeAnimation {
-  animation: closeAside 0.4s ease-in-out forwards;
+  animation: closeAside-ar 0.4s ease-in-out forwards;
 }
 
 
@@ -84,7 +83,7 @@ export default {
   }
 }
 
-@keyframes showAside {
+@keyframes showAside-ar {
   0% {
     right: -230px;
     width: 0%;
@@ -97,7 +96,7 @@ export default {
   }
 }
 
-@keyframes closeAside {
+@keyframes closeAside-ar {
   0% {
     right: 0px;
     width: 230px;
