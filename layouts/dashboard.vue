@@ -21,15 +21,15 @@ export default {
     dashNav,
   },
   methods: {
-    hideAside(){
- this.$store.dispatch("dashboard/aside/toggleAside");
+    hideAside() {
+      this.$store.dispatch("dashboard/aside/toggleAside");
     },
   },
   computed: {
     getAnimationClass() {
       return this.$store.getters["dashboard/aside/getAnimationClass"];
     },
-        getAsideStatus() {
+    getAsideStatus() {
       return this.$store.getters["dashboard/aside/getAsideStatus"];
     },
   },
@@ -70,7 +70,7 @@ export default {
 @keyframes showAside {
   0% {
     left: -200px;
-    width: 0%;
+    width: 0px;
     display: none;
   }
   100% {
@@ -88,7 +88,7 @@ export default {
   }
   100% {
     left: -230px;
-    width: 0%;
+    width: 0px;
     display: none;
   }
 }
@@ -96,7 +96,7 @@ export default {
 @keyframes showAside-ar {
   0% {
     right: -200px;
-    width: 0%;
+    width: 0px;
     display: none;
   }
   100% {
@@ -107,27 +107,25 @@ export default {
 }
 
 @keyframes closeAside-ar {
-  0% {
+ 0% {
     right: 0px;
     width: 200px;
     display: block;
   }
   100% {
     right: -200px;
-    width: 0%;
+    width: 0px;
     display: none;
   }
 }
 
 @media (max-width: $small-devices) {
   .aside {
-    width: 0%;
     max-width: 250px;
     position: absolute;
     left: 0px;
     top: 0px;
     z-index: $z-aside;
-
   }
   .content {
     position: relative;
