@@ -1,7 +1,6 @@
 :root {
     --white : #FFFFFF;
     --white-1: #F0F6FF;
-    --white-2: #F5F6FA; // dashboard bg-color
     // sky: 
     --sky: #e5f5fd;
     // dark-blue: 
@@ -13,6 +12,8 @@
     --grey-1: #C4C9D2;
     --grey-2: #b7bbc4;
     --grey-3: #3d3d3d;
+    --grey-4: #232333;
+    --grey-5: #1f1e2e;
     // blue: 
     --blue : #6BA6FF;
     --blue-1 : #4f94fa;
@@ -24,14 +25,11 @@
     // orange: 
     --orange: #fd772a;
     --orange-1: #ff6f1b;
-    // aside and navbar color:
-    --aside-nav: #FFFFFF; 
 }
 
 [theme="dark"] {
     --white : #2A2838;
     --white-1: #F0F6FF;
-    --white-2: #101010;
     // sky: 
     --sky: #1A1926;
     // dark-blue: 
@@ -43,11 +41,11 @@
     --grey-1: #C4C9D2;
     --grey-2: #b7bbc4;
     --grey-3: #3d3d3d;
+    --grey-4: #212029;
+    --grey-5: #1c1b22;
     // blue: 
     --blue : #6BA6FF;
     --blue-1 : #4f94fa;
     // red: 
     --red: #f82944;
-     // aside and navbar color:
-     --aside-nav: #0e0c0c; 
 }

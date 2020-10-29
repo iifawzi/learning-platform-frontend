@@ -16,9 +16,7 @@ export const mutations = {
 export const actions = {
     toggleAside({commit}){
         commit("changeAnimatinClass");
-        setTimeout(() => {
             commit("toggleAside");
-        }, 400);
     },
 };
 

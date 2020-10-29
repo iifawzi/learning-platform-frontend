@@ -30,7 +30,7 @@ export default {
 .dashboard-layout {
   display: flex;
   flex-flow: row;
-  background-color: var(--white-2);
+  background-image: linear-gradient(to bottom, var(--white), var(--sky));
 }
 .aside {
   width: 0px;
@@ -41,6 +41,7 @@ export default {
   display: flex;
   flex-flow: column;
   flex-grow: 1;
+  height: 100vh;
 }
 .en.openAnimation {
   animation: showAside 0.4s ease-in-out forwards;
@@ -116,6 +117,7 @@ export default {
   max-width: 250px;
   position: absolute;
   left: 0px; 
+  top: 0px;
     }
 }
 </style>

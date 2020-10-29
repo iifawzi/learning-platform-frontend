@@ -1,7 +1,7 @@
 <template>
   <nav class="dashboard-nav">
-    <span class="toggleAside" @click="toggleAside">
-      <i :class="['fas fa-bars', showAside ? 'colored-bars' : '']"></i>
+    <span :class="['toggleAside',  showAside ? 'colored-bars' : '']" @click="toggleAside">
+      <i class='fas fa-bars'></i>
     </span>
     <div class="navbar__content">
       <ul>

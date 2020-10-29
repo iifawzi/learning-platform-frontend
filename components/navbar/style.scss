@@ -6,16 +6,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 10px;
-  background-color: var(--aside-nav);   
+  background-color: var(--sky-2);   
 
 
   .toggleAside {
     cursor: pointer;
     transition: 0.5s linear;
-
   }
   .colored-bars {
-    color: var(--green-1);
+    color: var(--blue-1);
   }
 
   .navbar__content {
@@ -45,7 +44,8 @@
 
 
 @media (max-width: $small-devices){
-  .toggleAside {
-    display: none;
+  .toggleAside.colored-bars {
+  // padding-right: 230px;
+  padding-inline-start: 230px;
   }
 }
