@@ -1,63 +1,63 @@
 :root {
-    --white : #FFFFFF;
-    --white-1: #F0F6FF;
-    --white-3: #F5F6FA;
-    // sky: 
-    --sky: #e5f5fd;
-    // dark-blue: 
-    --dark-blue: #263239;
-    --dark-blue-1: #93a4b1;
-    --dark-blue-2: #8093a1;
-    //grey: 
-    --grey: #d0d4db;
-    --grey-1: #C4C9D2;
-    --grey-2: #b7bbc4;
-    --grey-3: #3d3d3d;
-    --grey-4: #232333;
-    --grey-5: #1f1e2e;
-    // blue: 
-    --blue : #6BA6FF;
-    --blue-1 : #4f94fa;
-    // red: 
-    --red: #f71432;
-    //green: 
-    --green: #04d148;
-    --green-1: #02be41;
-    // orange: 
-    --orange: #fd772a;
-    --orange-1: #ff6f1b;
-    // pink :
-    --pink: #F7E5E9;
-    --pink-1: #FD858F;
-    // aside-nav-colors
-    --aside-nav: white;
+  --white: #FFFFFF;
+  --white-1: #F0F6FF;
+  --white-3: #F5F6FA;
+  // sky: 
+  --sky: #e5f5fd;
+  // dark-blue: 
+  --dark-blue: #263239;
+  --dark-blue-1: #93a4b1;
+  --dark-blue-2: #8093a1;
+  //grey: 
+  --grey: #d0d4db;
+  --grey-1: #C4C9D2;
+  --grey-2: #b7bbc4;
+  --grey-3: #3d3d3d;
+  --grey-4: #232333;
+  --grey-5: #1f1e2e;
+  // blue: 
+  --blue: #6BA6FF;
+  --blue-1: #4f94fa;
+  // red: 
+  --red: #f71432;
+  //green: 
+  --green: #04d148;
+  --green-1: #02be41;
+  // orange: 
+  --orange: #fd772a;
+  --orange-1: #ff6f1b;
+  // aside-nav-colors
+  --aside-nav: white;
+  // welcome-box :
+  --welcome-box: #F7E5E9;
+  --welcome-box-1: #FD858F;
 }
 
 [theme="dark"] {
-    --white : #2A2838;
-    --white-1: #F0F6FF;
-    --white-3: #131D24;
-    // sky: 
-    --sky: #1A1926;
-    // dark-blue: 
-    --dark-blue: #ffffff;
-    --dark-blue-1: #93a4b1;
-    --dark-blue-2: #8093a1;
-    //grey: 
-    --grey: #d0d4db;
-    --grey-1: #C4C9D2;
-    --grey-2: #b7bbc4;
-    --grey-3: #3d3d3d;
-    --grey-4: #212029;
-    --grey-5: #1c1b22;
-    // blue: 
-    --blue : #6BA6FF;
-    --blue-1 : #4f94fa;
-    // red: 
-    --red: #f82944;
-  // pink :
-  --pink: #F7E5E9;
-  --pink-1: #FD858F;
-    // aside-colors
-    --aside-nav: #1D242E;
+  --white: #2A2838;
+  --white-1: #F0F6FF;
+  --white-3: #131D24;
+  // sky: 
+  --sky: #1A1926;
+  // dark-blue: 
+  --dark-blue: #ffffff;
+  --dark-blue-1: #93a4b1;
+  --dark-blue-2: #8093a1;
+  //grey: 
+  --grey: #d0d4db;
+  --grey-1: #C4C9D2;
+  --grey-2: #b7bbc4;
+  --grey-3: #3d3d3d;
+  --grey-4: #212029;
+  --grey-5: #1c1b22;
+  // blue: 
+  --blue: #6BA6FF;
+  --blue-1: #4f94fa;
+  // red: 
+  --red: #f82944;
+  // aside-colors
+  --aside-nav: #1D242E;
+  // welcome-box :
+  --welcome-box: #F7E5E9;
+  --welcome-box-1: #FD858F;
 }
