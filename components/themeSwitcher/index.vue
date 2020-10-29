@@ -1,9 +1,9 @@
 <template>
     <span v-if="darkMode" class="theme-switcher light" @click="toggleTheme">
-        <img src="~/assets/images/home/sun.svg" width="20px"  />
+        <img src="~/assets/images/home/sun.svg" width="16px"  />
     </span>
       <span v-else class="theme-switcher light" @click="toggleTheme">
-            <img src="~/assets/images/home/moon.svg" width="20px"/>
+            <img src="~/assets/images/home/moon.svg" width="16px"/>
     </span>
 </template>
 
