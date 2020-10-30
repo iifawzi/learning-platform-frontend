@@ -9,7 +9,9 @@
               <span class="list-item__icon">
                 <i class="fas fa-columns"></i>
               </span>
-              <span class="list-item__name"> {{$t("navbar.dashboard")}} </span>
+              <span class="list-item__name">
+                {{ $t("navbar.dashboard") }}
+              </span>
             </nuxt-link>
           </li>
           <li>
@@ -17,7 +19,9 @@
               <span class="list-item__icon">
                 <i class="fab fa-microblog"></i>
               </span>
-              <span class="list-item__name"> {{$t("navbar.announcements")}} </span>
+              <span class="list-item__name">
+                {{ $t("navbar.announcements") }}
+              </span>
             </nuxt-link>
           </li>
           <li>
@@ -25,7 +29,15 @@
               <span class="list-item__icon">
                 <i class="fas fa-users"></i>
               </span>
-              <span class="list-item__name"> {{$t("navbar.groups")}} </span>
+              <span class="list-item__name"> {{ $t("navbar.groups") }} </span>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/sections" class="list-item-link">
+              <span class="list-item__icon">
+                <i class="fab fa-youtube"></i>
+              </span>
+              <span class="list-item__name"> {{ $t("navbar.lessons") }} </span>
             </nuxt-link>
           </li>
           <li>
@@ -33,7 +45,9 @@
               <span class="list-item__icon">
                 <i class="fas fa-pencil-ruler"></i>
               </span>
-              <span class="list-item__name"> {{$t("navbar.assignments")}} </span>
+              <span class="list-item__name">
+                {{ $t("navbar.assignments") }}
+              </span>
             </nuxt-link>
           </li>
           <li>
@@ -41,7 +55,7 @@
               <span class="list-item__icon">
                 <i class="fas fa-print"></i>
               </span>
-              <span class="list-item__name"> {{$t("navbar.exams")}} </span>
+              <span class="list-item__name"> {{ $t("navbar.exams") }} </span>
             </nuxt-link>
           </li>
           <li>
@@ -49,7 +63,7 @@
               <span class="list-item__icon">
                 <i class="fas fa-cogs"></i>
               </span>
-              <span class="list-item__name"> {{$t("navbar.settings")}} </span>
+              <span class="list-item__name"> {{ $t("navbar.settings") }} </span>
             </nuxt-link>
           </li>
         </ul>

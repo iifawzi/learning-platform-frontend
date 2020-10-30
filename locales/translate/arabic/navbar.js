@@ -4,5 +4,6 @@ export default {
     "exams": "الامتحانات",
     "groups": "المجموعات",
     "assignments": "الواجبات",
-    "settings": "الاعدادات" 
+    "settings": "الاعدادات",
+    "lessons": "المحاضرات"
 }

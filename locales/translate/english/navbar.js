@@ -4,5 +4,6 @@ export default {
     "exams": "Exams",
     "groups": "Groups",
     "assignments": "Assignments",
-    "settings": "Settings" 
+    "settings": "Settings",
+    "lessons": "Lectures" 
 }
