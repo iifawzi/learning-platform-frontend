@@ -26,11 +26,16 @@
   // orange: 
   --orange: #fd772a;
   --orange-1: #ff6f1b;
+  // purple: 
+  --purple: #9E9CFF;
+  --purple-1: #6764FF;
   // aside-nav-colors
   --aside-nav: white;
-  // welcome-box :
-  --welcome-box: #F7E5E9;
-  --welcome-box-1: #FD858F;
+
+
+  // primary: 
+  --primary-color: #6764FF;
+  // secondery: 
 }
 
 [theme="dark"] {
@@ -57,7 +62,4 @@
   --red: #f82944;
   // aside-colors
   --aside-nav: #1D242E;
-  // welcome-box :
-  --welcome-box: #F7E5E9;
-  --welcome-box-1: #FD858F;
 }
