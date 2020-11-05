@@ -5,12 +5,12 @@
         type="text"
         :placeholder="$t('shared.phone_number')"
         autofocus
-        v-model="$v.student_info.phone_number.$model"
+        v-model="$v.teacher_info.teacher_phone_number.$model"
         @input="checkCorrectance"
       >
-        <div class="error" v-if="$v.student_info.phone_number.$dirty">
+        <div class="error" v-if="$v.teacher_info.teacher_phone_number.$dirty">
           <span
-            v-if="!$v.student_info.phone_number.required"
+            v-if="!$v.teacher_info.teacher_phone_number.required"
           >{{$t("errors.required", {field: $t("shared.phone_number")})}}</span>
         </div>
       </inputField>
@@ -20,12 +20,12 @@
         type="password"
         :placeholder="$t('shared.password')"
         autocomplete
-        v-model="$v.student_info.password.$model"
+        v-model="$v.teacher_info.password.$model"
         @input="checkCorrectance"
       >
-        <div class="error" v-if="$v.student_info.password.$dirty">
+        <div class="error" v-if="$v.teacher_info.password.$dirty">
           <span
-            v-if="!$v.student_info.password.required"
+            v-if="!$v.teacher_info.password.required"
           >{{$t("errors.required", {field: $t("shared.password")})}}</span>
         </div>
       </inputField>
@@ -35,7 +35,7 @@
         :title="$t('home.signin')"
         color="login-blue"
         :isDisabled="status"
-        @click="loginStudent"
+        @click="loginTeacher"
       />
     </div>
     <loading type="circles" v-if="loading" />
@@ -62,8 +62,8 @@ export default {
       error: "",
       loading: "",
       status: true,
-      student_info: {
-        phone_number: "",
+      teacher_info: {
+        teacher_phone_number: "",
         password: "",
       },
     };
@@ -76,19 +76,19 @@ export default {
         this.status = true;
       }
     },
-    loginStudent() {
+    loginTeacher() {
       this.loading = true;
       this.error = "";
       // api's call:
       this.$api
-        .post("students/signin", this.student_info)
+        .post("/teachers/signin", this.teacher_info)
         .then((respond) => {
           this.error = "";
           this.loading = false;
-          const studentData = respond.data.data;
-          Cookie.set("authorization", studentData.token);
-          Cookie.set("refresh_token", studentData.refresh_token);
-          this.$router.push(this.localePath('/dashboard', this.language));
+          const teacherData = respond.data.data;
+          Cookie.set("authorization", teacherData.token);
+          Cookie.set("refresh_token", teacherData.teacher_refresh_token);
+          this.$router.push(this.localePath('/controlpanel/main', this.language));
         })
         .catch((err) => {
           this.loading = false;
@@ -110,8 +110,8 @@ export default {
     },
   },
   validations: {
-    student_info: {
-      phone_number: {
+    teacher_info: {
+      teacher_phone_number: {
         required,
       },
       password: {

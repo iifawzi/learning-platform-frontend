@@ -8,10 +8,7 @@ export default {
     methods: {
         changeLang(newLanguage){
             this.$i18n.locale = newLanguage;
-            console.log(newLanguage);
             const test = newLanguage === 'ar' ? 'rtl' : 'ltr';
-            console.log(test);
-            console.log(document.documentElement);
             try {
    document.documentElement.setAttribute("dir",newLanguage === 'ar' ? 'rtl' : 'ltr');
             }catch(err){
