@@ -1,0 +1,47 @@
+.login-form {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    opacity: 0;
+    animation: showForm 1s forwards;
+    position: relative;
+    top: 60px;
+    .input-container {
+        width: 100%;
+        .error {
+            display: flex;
+            flex-flow: column;
+        }
+        }
+    .input-container:not(:last-child){
+        margin-bottom: 10px;
+    }
+    .button-container {
+        width: 100%;
+        height: 60px;
+    }
+   .no-account {
+       width: 100%;
+       font-size: 1.6rem;
+       margin-top: 15px;
+       .register-word {
+           color: var(--blue);
+           cursor: pointer;
+           &:hover {
+               color: var(--blue-1);
+           }
+       }
+   }
+}
+
+@keyframes showForm{
+    0% {
+    opacity: 0;
+    top: 60px;
+    }
+    100%{
+    opacity: 1;
+    top: 0px;
+    }
+    }

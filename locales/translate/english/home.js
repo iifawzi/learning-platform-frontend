@@ -1,6 +1,7 @@
 export default {
     "title": "#1 Intelligent Eduction Platform for your students, teachers.",
     "signin":"Sign in",
+    "loginControlPanel": "Login to the Control Panel",
     "register":"Register",
     "noAccount":"Don't have an account?",
     "haveAccount":"Have an account already?",

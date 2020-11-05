@@ -226,6 +226,7 @@ export default {
           this.errors.addStudent = "";
           const studentData = respond.data.data;
           Cookie.set("authorization", studentData.token);
+          Cookie.set("refresh_token", studentData.refresh_token);
           this.$router.push(this.localePath("/dashboard"));
         })
         .catch((err) => {

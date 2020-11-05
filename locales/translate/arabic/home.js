@@ -1,6 +1,7 @@
 export default {
     "title": "المنصة التعليمية الأولى للطلاب والمعلمين.",
     "signin":"تسجيل دخول",
+    "loginControlPanel": "الدخول إلى لوحة التحكم",
     "register":"تسجيل",
     "noAccount":"لا تمتلك حساب؟",
     "haveAccount":"تمتلك حساب؟",
