@@ -1,6 +1,6 @@
 <template>
-    <div class="cp">
-      <div class="cp__content">
+    <div class="cp_groups">
+      <div class="cp__groups">
        
       </div>
     </div>
