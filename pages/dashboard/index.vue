@@ -20,7 +20,6 @@ export default {
   components: {
     pageInfo,
   },
-  middleware: ['is-auth'],
   layout: "dashboard"
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <div class="dashboard-layout">
+  <div class="controlpanel-layout">
     <div :class="['aside', language, getAnimationClass]">
-      <dashAside />
+      <cpAside />
     </div>
-    <div class="dashboard__content">
-      <dashNav />
+    <div class="controlpanel__content">
+      <cpNav />
       <div class="content">
         <div class="backdorp" v-if="getAsideStatus" @click="hideAside"></div>
         <nuxt />
@@ -13,25 +13,25 @@
   </div>
 </template>
 <script>
-import dashAside from "~/components/main/aside";
-import dashNav from "~/components/main/navbar";
+import cpAside from "~/components/controlpanel/aside";
+import cpNav from "~/components/controlpanel/navbar";
 export default {
-  middleware: ["is-auth"],
+  middleware: ["is-admin"],
   components: {
-    dashAside,
-    dashNav,
+    cpAside,
+    cpNav,
   },
   methods: {
     hideAside() {
-      this.$store.dispatch("main/dashboard/aside/toggleAside");
+      this.$store.dispatch("controlpanel/aside/toggleAside");
     },
   },
   computed: {
     getAnimationClass() {
-      return this.$store.getters["main/dashboard/aside/getAnimationClass"];
+      return this.$store.getters["controlpanel/aside/getAnimationClass"];
     },
     getAsideStatus() {
-      return this.$store.getters["main/dashboard/aside/getAsideStatus"];
+      return this.$store.getters["controlpanel/aside/getAsideStatus"];
     },
   },
 };
@@ -39,7 +39,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.dashboard-layout {
+.controlpanel-layout {
   display: flex;
   flex-flow: row;
   background-color: var(--white-3);
@@ -48,7 +48,7 @@ export default {
   width: 0px;
   position: relative;
 }
-.dashboard__content {
+.controlpanel__content {
   display: flex;
   flex-flow: column;
   flex-grow: 1;

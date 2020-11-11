@@ -23,9 +23,9 @@
 </template>
 
 <script>
-import AdminLoginForm from "~/components/forms/AdminLoginForm";
-import themeSwitcher from "~/components/themeSwitcher";
-import languageSwitcher from "~/components/languageSwitcher";
+import AdminLoginForm from "~/components/controlpanel/forms/AdminLoginForm";
+import themeSwitcher from "~/components/shared/themeSwitcher";
+import languageSwitcher from "~/components/shared/languageSwitcher";
 export default {
   layout: "default",
   middleware: ['allow-control-login'],

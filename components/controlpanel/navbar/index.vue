@@ -19,8 +19,8 @@
 
 
 <script>
-import languageSwitcher from "~/components/languageSwitcher";
-import themeSwitcher from "~/components/themeSwitcher";
+import languageSwitcher from "~/components/shared/languageSwitcher";
+import themeSwitcher from "~/components/shared/themeSwitcher";
 import Cookie from "js-cookie";
 export default {
   components: {
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     toggleAside() {
-      this.$store.dispatch("dashboard/aside/toggleAside");
+      this.$store.dispatch("main/dashboard/aside/toggleAside");
     },
     logout() {
       Cookie.remove("refresh_token");
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     showAside() {
-      return this.$store.getters["dashboard/aside/getAsideStatus"];
+      return this.$store.getters["main/dashboard/aside/getAsideStatus"];
     },
   },
 };

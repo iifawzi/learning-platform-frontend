@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import LoginForm from "~/components/forms/login";
-import RegisterForm from "~/components/forms/register";
-import themeSwitcher from "~/components/themeSwitcher";
-import languageSwitcher from "~/components/languageSwitcher";
+import LoginForm from "~/components/main/forms/login";
+import RegisterForm from "~/components/main/forms/register";
+import themeSwitcher from "~/components/shared/themeSwitcher";
+import languageSwitcher from "~/components/shared/languageSwitcher";
 export default {
   layout: "default",
   middleware: ['allow-login'],
