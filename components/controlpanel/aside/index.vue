@@ -5,7 +5,7 @@
       <div class="aside__content--bottom">
         <ul class="bottom__list">
           <li>
-            <nuxt-link to="/controlpanel/main" :class="['list-item-link', currentRoute().includes('controlpanel/main') ?  'nuxt-link-active' : '']">
+            <nuxt-link :to="'/'+language+'/controlpanel/main'" :class="['list-item-link', currentRoute().includes('controlpanel/main') ?  'nuxt-link-active' : '']">
               <span class="list-item__icon">
                 <i class="fas fa-columns"></i>
               </span>
@@ -15,7 +15,7 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/controlpanel/groups" :class="['list-item-link', currentRoute().includes('controlpanel/groups') ?  'nuxt-link-active' : '']">
+            <nuxt-link :to="'/'+language+'/controlpanel/groups'" :class="['list-item-link', currentRoute().includes('controlpanel/groups') ?  'nuxt-link-active' : '']">
               <span class="list-item__icon">
                 <i class="fas fa-users"></i>
               </span>
