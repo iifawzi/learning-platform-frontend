@@ -1,0 +1,38 @@
+.groups {
+    &__content {
+        width: 100%;
+        .groups-table {
+            padding-top: 40px;
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+    .actions {
+        .action-icon {
+            cursor: pointer;
+            &:not(:last-child){
+                margin-inline-end: 10px;
+            }
+        }
+        .delete-icon {
+            color: var(--red);
+        }
+        .edit-icon {
+            color: var(--green-1);
+        }
+    }
+    .join-using {
+        color: white;
+        text-align: center;
+       padding-top: 5px;
+        width: 60px;
+        display: inline-block;
+        border-radius: 5px;
+        &.red {
+            background-color: var(--red-1);
+        }
+        &.blue {
+            background-color: var(--blue-1);
+        }
+    }
+}

@@ -45,7 +45,7 @@ export default {
   background-color: var(--white-3);
 }
 .aside {
-  width: 0px;
+  min-width: 0px;
   position: relative;
 }
 .controlpanel__content {
@@ -71,12 +71,12 @@ export default {
 @keyframes showAside {
   0% {
     left: -200px;
-    width: 0px;
+    min-width: 0px;
     display: none;
   }
   100% {
     left: 0px;
-    width: 200px;
+    min-width: 200px;
     display: block;
   }
 }
@@ -84,12 +84,12 @@ export default {
 @keyframes closeAside {
   0% {
     left: 0px;
-    width: 200px;
+    min-width: 200px;
     display: block;
   }
   100% {
     left: -230px;
-    width: 0px;
+    min-width: 0px;
     display: none;
   }
 }
@@ -97,12 +97,12 @@ export default {
 @keyframes showAside-ar {
   0% {
     right: -200px;
-    width: 0px;
+    min-width: 0px;
     display: none;
   }
   100% {
     right: 0px;
-    width: 200px;
+    min-width: 200px;
     display: block;
   }
 }
@@ -110,19 +110,19 @@ export default {
 @keyframes closeAside-ar {
   0% {
     right: 0px;
-    width: 200px;
+    min-width: 200px;
     display: block;
   }
   100% {
     right: -200px;
-    width: 0px;
+    min-width: 0px;
     display: none;
   }
 }
 
 @media (max-width: $small-devices) {
   .aside {
-    max-width: 250px;
+    min-width: 250px;
     position: absolute;
     left: 0px;
     top: 0px;

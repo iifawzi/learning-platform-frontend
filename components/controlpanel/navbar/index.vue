@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     toggleAside() {
-      this.$store.dispatch("main/dashboard/aside/toggleAside");
+      this.$store.dispatch("controlpanel/aside/toggleAside");
     },
     logout() {
       Cookie.remove("refresh_token");
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     showAside() {
-      return this.$store.getters["main/dashboard/aside/getAsideStatus"];
+      return this.$store.getters["controlpanel/aside/getAsideStatus"];
     },
   },
 };
