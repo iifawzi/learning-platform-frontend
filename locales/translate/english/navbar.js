@@ -2,7 +2,7 @@ export default {
     "dashboard": "Dashboard",
     "announcements": "Announcements",
     "exams": "Exams",
-    "groups": "Groups",
+    "classes": "Classes",
     "assignments": "Assignments",
     "settings": "Settings",
     "lessons": "Lectures" 

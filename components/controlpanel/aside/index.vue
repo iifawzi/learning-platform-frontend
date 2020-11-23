@@ -15,11 +15,11 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/'+language+'/controlpanel/groups'" :class="['list-item-link', currentRoute().includes('controlpanel/groups') ?  'nuxt-link-active' : '']">
+            <nuxt-link :to="'/'+language+'/controlpanel/classes'" :class="['list-item-link', currentRoute().includes('controlpanel/classes') ?  'nuxt-link-active' : '']">
               <span class="list-item__icon">
                 <i class="fas fa-users"></i>
               </span>
-              <span class="list-item__name"> {{ $t("navbar.groups") }} </span>
+              <span class="list-item__name"> {{ $t("navbar.classes") }} </span>
             </nuxt-link>
           </li>
         </ul>

@@ -2,7 +2,7 @@ export default {
     "dashboard": "المنصة الرئيسية",
     "announcements": "الإعلانات",
     "exams": "الامتحانات",
-    "groups": "المجموعات",
+    "classes": "الفصول",
     "assignments": "الواجبات",
     "settings": "الاعدادات",
     "lessons": "المحاضرات"

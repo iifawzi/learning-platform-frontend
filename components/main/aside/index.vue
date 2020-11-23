@@ -25,11 +25,11 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/groups" class="list-item-link">
+            <nuxt-link to="/classes" class="list-item-link">
               <span class="list-item__icon">
                 <i class="fas fa-users"></i>
               </span>
-              <span class="list-item__name"> {{ $t("navbar.groups") }} </span>
+              <span class="list-item__name"> {{ $t("navbar.classes") }} </span>
             </nuxt-link>
           </li>
           <li>

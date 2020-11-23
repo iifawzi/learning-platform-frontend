@@ -4,7 +4,7 @@ import errors from "./translate/arabic/errors"
 import messages from "./translate/arabic/messages"
 import navbar from "./translate/arabic/navbar"
 import dashboardMain from "./translate/arabic/dashboard/main"
-import cp_groups from "./translate/arabic/controlpanel/groups"
+import cp_classes from "./translate/arabic/controlpanel/classes"
 export default {
     home,
     shared,
@@ -12,5 +12,5 @@ export default {
     messages,
     navbar,
     dashboardMain,
-    cp_groups
+    cp_classes
 }

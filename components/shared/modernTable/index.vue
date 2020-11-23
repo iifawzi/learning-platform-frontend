@@ -1,7 +1,11 @@
 <template>
   <table :class="['modernTable', language === 'en' ? 'left' : 'right']">
+    <thead>
       <slot name="table__head"></slot>
-    <slot name="table__data"></slot>
+    </thead>
+    <tbody>
+      <slot name="table__data"></slot>
+    </tbody>
   </table>
 </template>
 
