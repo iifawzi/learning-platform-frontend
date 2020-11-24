@@ -16,12 +16,12 @@
             </tr>
           </template>
           <template v-slot:table__data>
-            <tr class="class-row">
-              <td>1</td>
-              <td>Math</td>
-              <td>The best math's class ever</td>
-              <td><span class="join-using red">Code</span></td>
-              <td>H498487HJ</td>
+            <tr class="class-row" v-for="classData of classesData" :key="classData.class_id">
+              <td>{{classData.class_id}}</td>
+              <td>{{classData.class_name}}</td>
+              <td>{{classData.class_description.substr(0,10)}}{{classData.class_description.length > 10 ? '...' : ''}}</td>
+              <td><span :class="['join-using', classData.join_using]">{{classData.join_using === 'code' ? $t("cp_classes.join_code") : $t("cp_classes.join_request")}}</span></td>
+              <td>{{classData.class_code}}</td>
               <td class="actions">
                 <i class="far fa-edit action-icon edit-icon"></i>
                 <i class="fas fa-minus-circle action-icon delete-icon"></i>
@@ -41,39 +41,37 @@ import loading from "~/components/shared/loading";
 import modernTable from "~/components/shared/modernTable";
 import Notification from "~/components/shared/Notification";
 export default {
-  // async fetch() {
-  //   this.$api
-  //     .post("classes/signin", this.student_info)
-  //     .then((respond) => {
-  //       this.error = "";
-  //       this.loading = false;
-  //       const studentData = respond.data.data;
-  //       Cookie.set("authorization", studentData.token);
-  //       Cookie.set("refresh_token", studentData.refresh_token);
-  //       this.$router.push(this.localePath("/dashboard", this.language));
-  //     })
-  //     .catch((err) => {
-  //       this.loading = false;
-  //       if (!err.response || !err.response.status) {
-  //         this.error = this.$t("errors.500");
-  //       } else {
-  //         switch (err.response.status) {
-  //           case 400:
-  //             this.error = this.$t("errors.400");
-  //             break;
-  //           case 401:
-  //             this.error = this.$t("home.login_401");
-  //             break;
-  //           default:
-  //             this.error = this.$t("errors.500");
-  //         }
-  //       }
-  //     });
-  // },
+  async created() {
+    this.$api
+      .get("classes/")
+      .then((respond) => {
+        this.error = "";
+        this.loading = false;
+        this.classesData = respond.data.data;
+      })
+      .catch((err) => {
+        this.loading = false;
+        if (!err.response || !err.response.status) {
+          this.error = this.$t("errors.500");
+        } else {
+          switch (err.response.status) {
+            case 401:
+              this.error = this.$t("errors.401");
+              break;
+            case 403:
+              this.error = this.$t("errors.403", {resource: this.$t("cp_classes.classes")});
+              break;
+            default:
+              this.error = this.$t("errors.500");
+          }
+        }
+      });
+  },
   data() {
     return {
       error: "",
       loading: true,
+      classesData: "",
     };
   },
   layout: "controlpanel",

@@ -28,10 +28,10 @@
         width: 60px;
         display: inline-block;
         border-radius: 5px;
-        &.red {
+        &.request {
             background-color: var(--red-1);
         }
-        &.blue {
+        &.code {
             background-color: var(--blue-1);
         }
     }
