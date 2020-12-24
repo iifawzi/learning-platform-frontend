@@ -1,38 +1,48 @@
 .classes {
-    &__content {
-        width: 100%;
-        .classes-table {
-            padding-top: 40px;
-            width: 90%;
-            margin: 0 auto;
-        }
+  &__content {
+    width: 100%;
+
+    .classes-table {
+      padding-top: 40px;
+      width: 90%;
+      margin: 0 auto;
     }
-    .actions {
-        .action-icon {
-            cursor: pointer;
-            &:not(:last-child){
-                margin-inline-end: 10px;
-            }
-        }
-        .delete-icon {
-            color: var(--red);
-        }
-        .edit-icon {
-            color: var(--green-1);
-        }
+  }
+
+  .actions {
+    .action-icon {
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-inline-end: 10px;
+      }
     }
-    .join-using {
-        color: white;
-        text-align: center;
-       padding-top: 5px;
-        width: 60px;
-        display: inline-block;
-        border-radius: 5px;
-        &.request {
-            background-color: var(--red-1);
-        }
-        &.code {
-            background-color: var(--blue-1);
-        }
+
+    .delete-icon {
+      color: var(--red);
     }
+
+    .edit-icon {
+      color: var(--green-1);
+    }
+  }
+
+  .join-using {
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 80px;
+    display: inline-block;
+    border-radius: 5px;
+
+    &.request {
+      background-color: var(--red-1);
+    }
+
+    &.code {
+      background-color: var(--blue-1);
+    }
+  }
 }
