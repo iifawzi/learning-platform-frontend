@@ -16,6 +16,9 @@
 import cpAside from "~/components/controlpanel/aside";
 import cpNav from "~/components/controlpanel/navbar";
 export default {
+    head: {
+    title: 'Control Panel',
+    },
   middleware: ["is-admin"],
   components: {
     cpAside,

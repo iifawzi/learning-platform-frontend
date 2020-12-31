@@ -16,12 +16,25 @@
             </tr>
           </template>
           <template v-slot:table__data>
-            <tr class="class-row" v-for="classData of classesData" :key="classData.class_id">
-              <td>{{classData.class_id}}</td>
-              <td>{{classData.class_name}}</td>
-              <td>{{classData.class_description.substr(0,10)}}{{classData.class_description.length > 10 ? '...' : ''}}</td>
-              <td><span :class="['join-using', classData.join_using]">{{classData.join_using === 'code' ? $t("cp_classes.join_code") : $t("cp_classes.join_request")}}</span></td>
-              <td>{{classData.class_code}}</td>
+            <tr
+              class="class-row"
+              v-for="(classData, i) of classesData"
+              :key="classData.class_id"
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ classData.class_name }}</td>
+              <td>
+                {{ classData.class_description.substr(0, 10)
+                }}{{ classData.class_description.length > 10 ? "..." : "" }}
+              </td>
+              <td>
+                <span :class="['join-using', classData.join_using]">{{
+                  classData.join_using === "code"
+                    ? $t("cp_classes.join_code")
+                    : $t("cp_classes.join_request")
+                }}</span>
+              </td>
+              <td>{{ classData.class_code }}</td>
               <td class="actions">
                 <i class="far fa-edit action-icon edit-icon"></i>
                 <i class="fas fa-minus-circle action-icon delete-icon"></i>
@@ -59,7 +72,9 @@ export default {
               this.error = this.$t("errors.401");
               break;
             case 403:
-              this.error = this.$t("errors.403", {resource: this.$t("cp_classes.classes")});
+              this.error = this.$t("errors.403", {
+                resource: this.$t("cp_classes.classes"),
+              });
               break;
             default:
               this.error = this.$t("errors.500");
