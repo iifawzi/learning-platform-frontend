@@ -37,7 +37,10 @@
               <td>{{ classData.class_code }}</td>
               <td class="actions">
                 <i class="far fa-edit action-icon edit-icon"></i>
-                <i class="fas fa-minus-circle action-icon delete-icon"></i>
+                <i
+                  class="fas fa-minus-circle action-icon delete-icon"
+                  @click="switchDialog(classData.class_id)"
+                ></i>
               </td>
             </tr>
           </template>
@@ -45,6 +48,13 @@
         <loading v-if="loading" type="circles" />
       </div>
     </div>
+    <confirmDialog
+      v-if="confirmationDialogStatus && !loading"
+      @callToConfirm="deleteClass"
+      @callToCloseDialog="switchDialog"
+    >
+      Are you sure you wanna delete this class?
+    </confirmDialog>
   </div>
 </template>
 
@@ -52,7 +62,7 @@
 <script>
 import loading from "~/components/shared/loading";
 import modernTable from "~/components/shared/modernTable";
-import Notification from "~/components/shared/Notification";
+import confirmDialog from "~/components/shared/confirmDialog";
 export default {
   async created() {
     this.$api
@@ -87,13 +97,54 @@ export default {
       error: "",
       loading: true,
       classesData: "",
+      confirmationDialogStatus: false,
+      class_id_to_delete: -1,
     };
+  },
+  methods: {
+    switchDialog(class_id) {
+      this.confirmationDialogStatus = !this.confirmationDialogStatus;
+      if (class_id) {
+        this.class_id_to_delete = class_id;
+      }
+    },
+    deleteClass() {
+      this.loading = true;
+      this.$api({
+        method: "DELETE",
+        url: "classes/",
+        data: { class_id: this.class_id_to_delete },
+      })
+        .then((respond) => {
+          this.error = "";
+          this.loading = false;
+        })
+        .catch((err) => {
+          this.loading = false;
+          if (!err.response || !err.response.status) {
+            this.error = this.$t("errors.500");
+          } else {
+            switch (err.response.status) {
+              case 401:
+                this.error = this.$t("errors.401");
+                break;
+              case 403:
+                this.error = this.$t("errors.403", {
+                  resource: this.$t("cp_classes.classes"),
+                });
+                break;
+              default:
+                this.error = this.$t("errors.500");
+            }
+          }
+        });
+    },
   },
   layout: "controlpanel",
   components: {
     modernTable,
     loading,
-    Notification,
+    confirmDialog,
   },
 };
 </script>

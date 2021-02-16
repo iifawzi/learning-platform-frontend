@@ -1,4 +1,6 @@
 .classes {
+  position: relative;
+
   &__content {
     width: 100%;
 
@@ -20,10 +22,20 @@
 
     .delete-icon {
       color: var(--red);
+      opacity: 0.5;
+      transition: 0.3s;
+      &:hover {
+        opacity: 1;
+      }
     }
 
     .edit-icon {
       color: var(--green-1);
+      opacity: 0.5;
+      transition: 0.3s;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
